@@ -23,5 +23,13 @@ io.on("connection", function (socket) {
       nome: data.nome,
       mensagem: data.mensagem,
     });
+
+    if (parseInt(data.apelidoAtualizado) == 0) {
+      socket.emit("participantesParaCliente", { nome: data.nome });
+
+      socket.broadcast.emit("participantesParaCliente", {
+        nome: data.nome,
+      });
+    }
   });
 });
