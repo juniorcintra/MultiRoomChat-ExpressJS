@@ -20,5 +20,5 @@ module.exports.iniciaChat = function (app, req, res) {
     mensagem: " acabou de se conectar",
   });
 
-  res.render("chat");
+  res.render("chat", { nome: dadosForm.nome });
 };

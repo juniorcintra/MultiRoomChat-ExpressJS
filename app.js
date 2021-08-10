@@ -15,4 +15,13 @@ io.on("connection", function (socket) {
   socket.on("disconnect", function () {
     console.log("Usuario desconectou");
   });
+
+  socket.on("msgParaServidor", function (data) {
+    socket.emit("msgParaCliente", { nome: data.nome, mensagem: data.mensagem });
+
+    socket.broadcast.emit("msgParaCliente", {
+      nome: data.nome,
+      mensagem: data.mensagem,
+    });
+  });
 });
